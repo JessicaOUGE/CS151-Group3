@@ -27,15 +27,21 @@ public class Joker extends AbstractRole{
 	 * event of getSkill. If the skill work (useOfSkill become true), then the skill will effect base on different roles
 	 * if the skill work, the Player class should help reset the game chances
 	 */
-	public void getSkill(int condition, Hangman game) {
-		Random rand = new Random();
-		int rand_int1 = rand.nextInt(1000);
-		if(rand_int1 % 2 == 0) {
-			condition += 2;  //get two more chances to guess
-		}else
+	public void getSkill(Hangman game) {
+		if(game.getGameChances()>2 && skillChances > 0)
 		{
-			condition -= 2;  //minus two chances
+			Random rand = new Random();
+			int rand_int1 = rand.nextInt(1000);
+			if(rand_int1 % 2 == 0) {
+				game.addGameChances(2);;  //get two more chances to guess
+			}else
+			{
+				game.subGameChances(2);;  //minus two chances
+			}
+			useOfSkill = true;
+			setSkillChances(0);
 		}
+		
 	}
 
 }

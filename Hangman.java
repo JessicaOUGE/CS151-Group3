@@ -16,6 +16,7 @@ public class Hangman {
 	private ArrayList<Character> wrongLetters = new ArrayList<Character>(20); ////store the wrong letters you guessed
 	private boolean win = false;
 	private boolean lose = false;
+	private int gameChances;
 	
 	/**
 	 * constructor of Hangman
@@ -26,6 +27,7 @@ public class Hangman {
 	 */
 	public Hangman()
 	{
+		gameChances = 5;
 		word = new String("null");
 		char ch;
 		for(int i=0; i<word.length(); i++)
@@ -204,5 +206,21 @@ public class Hangman {
 	boolean checkLose()
 	{
 		return lose;
+	}
+	void setGameChances(int num) 
+	{
+		gameChances = num;
+	}
+	int getGameChances()
+	{
+		return gameChances;
+	}
+	void addGameChances(int num)
+	{
+		gameChances +=num;
+	}
+	void subGameChances(int num)
+	{
+		gameChances -=num;
 	}
 }

@@ -29,7 +29,7 @@ public class KingOfGame extends AbstractRole{
 	 * event of getSkill. If the skill work (useOfSkill become true), then the skill will effect base on different roles
 	 * if the skill work, then system will show 2 choices of letters, one is true
 	 */
-	public void getSkill(int condition, Hangman game)
+	public void getSkill(Hangman game)
 	{
 		int randomNum1;
 		int randomNum2;
