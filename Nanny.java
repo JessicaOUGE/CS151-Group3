@@ -26,8 +26,15 @@ public class Nanny extends AbstractRole{
 	 * event of getSkill. If the skill work (useOfSkill become true), then the skill will effect base on different roles
 	 * if the skill work, the Player class should help reset the game chances
 	 */
-	public void getSkill(int condition, Hangman game) {
-		condition++;  //get one more chance to guess	
+	public void getSkill(Hangman game) {
+		
+		if(game.getGameChances()>0 && skillChances >0)
+		{
+			game.addGameChances(1);  //get one more chance to guess	
+			useOfSkill = true;
+			setSkillChances(0);
+		}
+		
 	}
 
 }

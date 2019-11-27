@@ -1,3 +1,5 @@
+import java.awt.Image;
+
 import javax.swing.*;
 
 
@@ -12,12 +14,14 @@ public class DrStrange extends AbstractRole{
 	public DrStrange()
 	{
 		System.out.println("here is Dr.Strange");
-		roleName = "doctor strange";
+		roleName = "Doctor Strange";
 		
 		description =new String("time travel: every time when the player "
 				+ "has one chance left and only need to guess one more letter to win,"
 				+ " the player can choose to restart a new game. ");
-		image = new ImageIcon("Dr_Strange.jpg");
+		image = new ImageIcon("src/Dr_Strange.jpg");
+		
+		image.setImage( image.getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT) );
 	}
 	
 	/**
@@ -29,14 +33,16 @@ public class DrStrange extends AbstractRole{
 	 * event of getSkill. If the skill work (useOfSkill become true), then the skill will effect base on different roles
 	 * if the skill work, the Player class should help reset the game chances
 	 */
-	public void getSkill(int condition, Hangman game) {
-		if(skillChances > 0 && condition == 1)
+	public void getSkill(Hangman game) {
+		if(skillChances > 0 && game.getGameChances() == 1)
 		{
 			setSkillChances(1);
 			useOfSkill = true;
+			setSkillChances(1);
 			game.restart();
 		}
 	}
+
 }
 
 

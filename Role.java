@@ -4,7 +4,7 @@ public interface Role {
 
 	String getName();
 	
-	void getSkill(int condition, Hangman game);
+	void getSkill(Hangman game);
 	
 	boolean checkIfSkillWork();
 	

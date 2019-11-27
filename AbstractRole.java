@@ -1,11 +1,12 @@
 import javax.swing.Icon;
+import javax.swing.*;
 
 public abstract class AbstractRole implements Role{
 
 	String roleName;  //the name of the role
 	String description;  //description of skill
 	int skillChances;  //how many available skill chances
-	Icon image;  //the role image
+	ImageIcon image;  //the role image
 	boolean useOfSkill; //if skill is not working, it's false. Otherwise, it become true
 	
 	AbstractRole()
