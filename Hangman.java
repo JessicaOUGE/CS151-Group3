@@ -1,9 +1,15 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
-
+import java.util.Random;
 
 public class Hangman {
 
 	private String word;
+	private int numOfLetters;
 	private ArrayList<Character> availableRightLetters = new ArrayList<Character>(20); //store the available right letters from the word
 	private ArrayList<Character> availableWrongLetters = new ArrayList<Character>(26); //store the available wrong letters from alphabet beside the right letters
 	private ArrayList<Character> rightLetters = new ArrayList<Character>(20); //store the right letters you guessed
@@ -72,10 +78,44 @@ public class Hangman {
 	/**
 	 * get the word that you are guessing
 	 * @return a string of the word
+	 *  
 	 */
 	String getGuessingWord()
 	{
-		return word;
+		String term = new String();
+		//File file = new File("Dictionary");
+		BufferedReader fin = null;
+		try {
+			fin = new BufferedReader(new FileReader("Dictionary"));
+			Random rand = new Random();
+			int randNum = rand.nextInt(649);
+			int i = 0;
+			while (i != randNum ) {
+				term = fin.readLine();
+				i++;
+			}
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+			System.out.println("Error");
+		}
+		finally {
+			try {
+				if (fin != null) fin.close();				
+			}
+			catch (IOException e) {
+				e.printStackTrace();
+				System.out.println("Error");							
+			}
+		}
+		
+		return term;
+	}
+		
+	int getNumOfLetters() 
+	{
+		//count the number of letters of the word variable
+		return numOfLetters;
 	}
 	/**
 	 * every time, when you guess a right letter, it will be add to ArrayList of rightLetters
