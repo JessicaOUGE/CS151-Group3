@@ -1,13 +1,24 @@
-import java.awt.*;
 
+import java.awt.*;
+import java.io.IOException;
 import javax.swing.*;
 
 public class testHangman {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		Role aRole = new DrStrange();
 		Hangman game = new Hangman();
+		System.out.println("word: " + game.getGuessingWord());
+		//String word = game.getGuessingWord();
+		//get word from dictionary
+		//set up dictionary
 		
+  //Scanner cin = new Scanner(System.in);
+		//set up giant input loop
+		//while(all letters guessed or all chances used)
+		//ask player for letter
+		//if loops for correct and incorrect
+		//set up win and lose conditions
 //		game.addRightLetters('n');
 //		game.addRightLetters('l');
 //		game.addRightLetters('n');
