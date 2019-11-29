@@ -21,7 +21,7 @@ public class JamesBond extends AbstractRole{
 		description =new String("Seduce: every time when you "
 				+ "go up and handsome charms to seduce the person and get a free letter,"
 				+ " but you spend too much time seducing using 2 chances. ");
-		image = new ImageIcon("JamesBond.jpg");
+		image = new ImageIcon("src/JamesBond.jpg");
 	}
 	
 	/**

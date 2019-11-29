@@ -17,7 +17,7 @@ public class KingOfGame extends AbstractRole{
 				+ " Your belief has touched the God of Game, "
 				+ "so God is going to give you two letters(one is right, another is wrong) to choose from.");
 						
-		image = new ImageIcon("King_of_Game.jpg");
+		image = new ImageIcon("src/King_of_Game.jpg");
 	}
 	
 	/**

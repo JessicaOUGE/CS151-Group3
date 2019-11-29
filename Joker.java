@@ -14,7 +14,7 @@ public class Joker extends AbstractRole{
 		description = new String("The Joker's job is to let you happy or cry,\n"
 				+ "I will give you extral two chances or minus two chance to guess,\n" + 
 				"Let's see how you are lucky!\n\n");
-		image = new ImageIcon("Joker.jpg");
+		image = new ImageIcon("src/Joker.jpg");
 	}
 
 	@Override

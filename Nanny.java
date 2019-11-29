@@ -13,7 +13,7 @@ public class Nanny extends AbstractRole{
 		description = new String("The nanny's job is to take care of you,\n"
 				+ "I will give you an extral chance to guess,\n" + 
 				"Don't worry, and do your best!\n\n");
-		image = new ImageIcon("Nanny.jpg");
+		image = new ImageIcon("src/Nanny.jpg");
 	}
 
 	@Override

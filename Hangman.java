@@ -1,15 +1,13 @@
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
+
 public class Hangman {
 
 	private String word;
-	private int numOfLetters;
 	private ArrayList<Character> availableRightLetters = new ArrayList<Character>(20); //store the available right letters from the word
 	private ArrayList<Character> availableWrongLetters = new ArrayList<Character>(26); //store the available wrong letters from alphabet beside the right letters
 	private ArrayList<Character> rightLetters = new ArrayList<Character>(20); //store the right letters you guessed
@@ -17,6 +15,7 @@ public class Hangman {
 	private boolean win = false;
 	private boolean lose = false;
 	private int gameChances;
+	Role role;
 	
 	/**
 	 * constructor of Hangman
@@ -28,7 +27,7 @@ public class Hangman {
 	public Hangman()
 	{
 		gameChances = 5;
-		word = new String("null");
+		word = getGuessingWord();
 		char ch;
 		for(int i=0; i<word.length(); i++)
 		{
@@ -75,12 +74,52 @@ public class Hangman {
 	 */
 	void restart()
 	{
+		word = getGuessingWord();
+		gameChances = 5;
 		
+		char ch;
+		for(int i=0; i<word.length(); i++)
+		{
+			ch = word.charAt(i);
+			if(!availableRightLetters.contains(ch))
+			{
+				availableRightLetters.add(ch);
+			}
+		}
+		try
+		{
+			for(int i=0; i<26; i++)
+			{
+				availableWrongLetters.add((char) (97+i));
+			}
+			availableWrongLetters.removeAll(availableRightLetters);
+		}
+		catch(ClassCastException a)
+		{
+			System.out.println("cannot remove...");
+		}
+		catch(NullPointerException a)
+		{
+			System.out.println("Null Pointer....");
+		}
+		
+		System.out.println("Available correct letters: ");
+		for(int i=0; i<availableRightLetters.size(); i++)
+		{
+			System.out.print(availableRightLetters.get(i));
+		}
+		System.out.print('\n');
+		
+		System.out.println("Available wrong letters: ");
+		for(int i=0; i<availableWrongLetters.size(); i++)
+		{
+			System.out.print(availableWrongLetters.get(i));
+		}
+		System.out.print('\n');
 	}
 	/**
 	 * get the word that you are guessing
 	 * @return a string of the word
-	 *  
 	 */
 	String getGuessingWord()
 	{
@@ -88,7 +127,7 @@ public class Hangman {
 		//File file = new File("Dictionary");
 		BufferedReader fin = null;
 		try {
-			fin = new BufferedReader(new FileReader("Dictionary"));
+			fin = new BufferedReader(new FileReader("src/Dictionary.txt"));
 			Random rand = new Random();
 			int randNum = rand.nextInt(649);
 			int i = 0;
@@ -113,12 +152,32 @@ public class Hangman {
 		
 		return term;
 	}
-		
-	int getNumOfLetters() 
-	{
-		//count the number of letters of the word variable
-		return numOfLetters;
+	
+	boolean checkGuess(Character guess) 
+	{		
+		boolean correct = false;
+		int num;
+		Character ch;
+		for (int i = 0; i < availableRightLetters.size(); i++) 
+		{
+			ch = availableRightLetters.get(i);
+			num = ch.compareTo(guess);
+			
+			if (num == 0) {correct = true;}
+			
+			if (correct) 
+			{
+				addRightLetters(guess); 
+				System.out.println("correct");
+				return correct;
+			}
+		}
+		addWrongLetters(guess);			
+		gameChances--;
+		System.out.println("incorrect");
+		return correct;
 	}
+	
 	/**
 	 * every time, when you guess a right letter, it will be add to ArrayList of rightLetters
 	 */
@@ -222,5 +281,17 @@ public class Hangman {
 	void subGameChances(int num)
 	{
 		gameChances -=num;
+	}
+	void setRole(Role r)
+	{
+		role = r;
+	}
+	Role getRole()
+	{
+		return role;
+	}
+	String getWord()
+	{
+		return word;
 	}
 }
