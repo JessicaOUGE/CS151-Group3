@@ -17,7 +17,7 @@ public class Hulk extends AbstractRole{
 		description =new String("Hulk goes on a rampage which causes one of two events to occur:"
 				+ "you get 2 free letters because you beat up the person real bad or "
 				+ "you lose 2 chances because you were too busy being crazy. High risk high reward.");
-		image = new ImageIcon("src/Hulk.jpg");
+		image = new ImageIcon("src/Hulk.png");
 	}
 	@Override
 	public void getSkill(Hangman game) 
